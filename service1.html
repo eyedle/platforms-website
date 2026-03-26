@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service 1 — Community Search</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+
+  <div id="header"></div>
+
+  <!-- Navigation
+  <header class="border-b">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div class="flex space-x-6">
+        <a href="index.html" class="font-semibold">Home</a>
+        <a href="#" class="text-gray-600">Service 1</a>
+        <a href="service2.html" class="text-gray-600 hover:text-black">Service 2</a>
+        <a href="service3.html" class="text-gray-600 hover:text-black">Service 3</a>
+      </div>
+      <a href="login.html" class="border px-4 py-2 rounded hover:bg-gray-100">Login</a>
+    </nav>
+  </header> -->
+
+  <!-- Main -->
+  <main class="flex-grow">
+    <section class="max-w-4xl mx-auto px-6 py-16">
+
+      <!-- Title & Description -->
+      <h1 class="text-3xl font-bold mb-4">Community Search</h1>
+      <p class="text-gray-600 mb-10">
+        Search and analyze social media communities by account name or keyword set.
+      </p>
+
+      <!-- Input + Execute -->
+      <div class="flex gap-4 mb-6">
+        <input
+          id="queryInput"
+          type="text"
+          placeholder="Enter account name or keywords"
+          class="flex-grow border rounded px-4 py-2"
+        />
+
+        <!-- CHANGED: Execute button replaced by container -->
+        <div id="actionArea">
+          <button
+            id="runBtn"
+            class="bg-black text-white px-6 py-2 rounded hover:bg-gray-800"
+          >
+            Execute
+          </button>
+        </div>
+      </div>
+
+      <!-- CHANGED: Confirmation panel (hidden by default) -->
+      <div id="confirmBox" class="hidden border rounded-lg p-4 mb-6 bg-gray-50">
+        <p class="mb-2 text-sm">
+          This action will cost <strong>5 credits</strong>.
+        </p>
+        <p class="mb-4 text-sm">Is everything correct?</p>
+        <div class="flex gap-4">
+          <button id="confirmProceed" class="bg-black text-white px-4 py-2 rounded">Proceed</button>
+          <button id="confirmCancel" class="border px-4 py-2 rounded">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div id="status" class="mb-6 text-sm text-gray-700">
+        Idle
+      </div>
+
+      <!-- Logs -->
+      <div class="border rounded-lg bg-gray-50 p-4 h-64 overflow-y-auto text-sm font-mono" id="logFrame">
+        <div class="text-gray-400">Logs will appear here…</div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t">
+    <div class="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500">
+      © 2025 Social Media Analytics
+    </div>
+  </footer>
+
+  <script src="header.js"></script>
+
+  <!-- CHANGED: Extended JS with confirmation flow -->
+  <script>
+    const runBtn = document.getElementById('runBtn');
+    const input = document.getElementById('queryInput');
+    const status = document.getElementById('status');
+    const logFrame = document.getElementById('logFrame');
+    const confirmBox = document.getElementById('confirmBox');
+    const confirmProceed = document.getElementById('confirmProceed');
+    const confirmCancel = document.getElementById('confirmCancel');
+
+    fetch('header.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('header').innerHTML = html;
+        initHeader(); // initialize after injection
+      });
+
+    let jobTimer = null;
+    let pendingValue = null;
+    
+    runBtn.addEventListener('click', () => {
+      const value = input.value.trim();
+      if (!value) return;
+      pendingValue = value;
+      lockInput();
+      confirmBox.classList.remove('hidden');
+    });
+
+    confirmCancel.addEventListener('click', () => {
+      pendingValue = null;
+      unlockInput();
+      confirmBox.classList.add('hidden');
+    });
+
+    confirmProceed.addEventListener('click', () => {
+      confirmBox.classList.add('hidden');
+      startJob();
+    });
+
+    function startJob() {
+      status.textContent = `Running: community search by keywords {${pendingValue}}`;
+      status.className = 'mb-6 text-sm text-blue-600';
+      logFrame.innerHTML = '';
+
+      appendLog('Job created');
+      appendLog('Credits deducted');
+      appendLog('Sending request to backend');
+
+      // Simulated execution
+      jobTimer = setTimeout(() => {
+        const success = Math.random() > 0.3; // 70% success
+
+        if (success) {
+        appendLog('Community search completed successfully');
+        status.textContent = 'Completed successfully';
+        status.className = 'mb-6 text-sm text-green-600';
+        } else {
+        appendLog('Error: backend execution failed');
+        status.textContent = 'Error occurred. Please contact support.';
+        status.className = 'mb-6 text-sm text-red-600';
+        }
+
+        unlockInput();
+      }, 3000);
+    }
+
+    function appendLog(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      logFrame.appendChild(div);
+      logFrame.scrollTop = logFrame.scrollHeight;
+    }
+
+    function lockInput() {
+      input.disabled = true;
+      input.classList.add('bg-gray-100');
+      runBtn.disabled = true;
+      runBtn.classList.add('opacity-50');
+    }
+
+    function unlockInput() {
+      input.disabled = false;
+      input.classList.remove('bg-gray-100');
+      runBtn.disabled = false;
+      runBtn.classList.remove('opacity-50');
+    }
+</script>
+
+</body>
+</html>

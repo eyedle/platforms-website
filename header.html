@@ -1,0 +1,83 @@
+<!-- Shared Header -->
+<header class="border-b">
+  <nav class="max-w-7xl mx-auto flex items-center px-6 py-4">
+  
+    <img src="assets/logo_platforms.png" class="h-12 w-auto" />
+
+    <div class="hidden flex-1 md:flex justify-center space-x-6">
+      <a href="index.html" id="nav-home" class="text-gray-600 hover:text-black">Home</a>
+      <a href="reddit.html" id="nav-reddit" class="text-gray-600 hover:text-black">Reddit</a>
+      <a href="team.html" id="nav-team" class="text-gray-600 hover:text-black">Team</a>
+      <a href="contactus.html" id="nav-contact" class="text-gray-600 hover:text-black">Contact us</a>
+    </div>
+
+    <div class="hidden md:block ml-auto">
+      <!-- <button
+        onclick="window.location.href='mailto:clancesamf@gmail.com'"
+        class="px-4 py-2 rounded border border-gray-900 text-gray-900
+              hover:bg-gray-900 hover:text-white transition">
+        Email the team 
+      </button> -->
+      <a href="mailto:lancesamf@gmail.com" class="inline-block px-6 py-2 rounded-sm border border-gray-900 text-gray-900
+              hover:bg-gray-900 hover:text-white transition">
+        Email team
+      </a>
+    </div>
+
+    <!-- Hamburger (mobile only) -->
+    <button id="menuBtn" class="ml-auto md:hidden">
+      <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <!-- <a href="mailto:lancesamf@gmail.com"
+            class="inline-block px-10 py-4 rounded-md bg-gray-900 text-white text-lg font-medium hover:bg-gray-800 transition">
+            Send email
+          </a> -->
+
+    <!-- Auth area -->
+    <!-- <div id="authArea" class="relative">
+      <button id="loginBtn" class="border px-4 py-2 rounded hover:bg-gray-100">
+        Login
+      </button> -->
+
+      <!-- User button (hidden until login) -->
+      <!-- <button id="userBtn" class="hidden border px-4 py-2 rounded hover:bg-gray-100">
+        user@email.com
+      </button> -->
+
+      <!-- User menu -->
+      <!-- <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 border rounded bg-white shadow">
+        <div class="px-4 py-2 text-sm border-b">
+          Credits: <strong id="creditCount">42</strong>
+        </div>
+        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Account</a>
+        <button id="logoutBtn" class="w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+          Logout
+        </button>
+      </div> -->
+
+    <!-- </div> -->
+    
+  </nav>
+    <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden px-6 pb-4 md:hidden">
+    <div class="flex flex-col space-y-4">
+      <a href="index.html" class="text-gray-700">Home</a>
+      <a href="reddit.html" class="text-gray-700">Reddit</a>
+      <a href="team.html" class="text-gray-700">Team</a>
+      <a href="contactus.html" class="text-gray-700">Contact us</a>
+
+      <button
+        onclick="window.location.href='mailto:lancesamf@gmail.com'"
+        class="mt-2 px-4 py-2 rounded border border-gray-900 text-gray-900
+               hover:bg-gray-900 hover:text-white transition">
+        Email the team
+      </button>
+    </div>
+  </div>
+
+</header>
