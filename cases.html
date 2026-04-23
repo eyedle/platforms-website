@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cases — Platforms research</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const buttons = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(".case-card");
+
+        function applyFilter(filter) {
+            cards.forEach(card => {
+            const categories = card.dataset.category;
+
+            if (filter === "all" || categories.includes(filter)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+            });
+
+            buttons.forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.filter === filter);
+            });
+        }
+        // Click filtering
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+            applyFilter(btn.dataset.filter);
+
+            // update URL (nice touch)
+            const url = new URL(window.location);
+            url.searchParams.set("filter", btn.dataset.filter);
+            history.replaceState(null, "", url);
+            });
+        });
+        // Preset filter from URL
+        const params = new URLSearchParams(window.location.search);
+        const preset = params.get("filter");
+        if (preset) {
+            applyFilter(preset);
+        } else {
+            applyFilter("all");
+        }
+        });
+    </script>
+    <style>
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #374151;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            background-color: #f3f4f6;
+        }
+        .filter-btn.active {
+            background-color: #111827;
+            color: white;
+            border-color: #111827;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+  <div id="header"></div>
+  <main class="flex-grow">
+  <section class="max-w-6xl mx-auto px-6 py-24">
+
+    <h1 class="text-3xl font-bold mb-10 text-center">
+      Case Studies
+    </h1>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12" id="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="social">Social Media</button>
+      <button class="filter-btn" data-filter="regional">Regional Research</button>
+      <button class="filter-btn" data-filter="tech">Technology</button>
+      <button class="filter-btn" data-filter="reddit">Reddit</button>
+    </div>
+
+    <!-- Cards grid -->
+    <!-- <div id="casesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> -->
+    <div id="casesGrid" class="flex flex-col gap-8">
+
+        <div class="case-card border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-6" data-category="social reddit">
+            <!-- Image -->
+            <div class="flex-shrink-0 mx-auto md:mx-0">
+                <img src="assets/pexels-brettjordan-7568293.jpg" class="w-48 h-48 object-cover rounded-md border">
+            </div>
+            <!-- Content -->
+            <div class="flex-grow text-center md:text-left">
+                <p class="text-sm text-gray-500 mb-2">
+                Social Media · Reddit
+                </p>
+                <h3 class="text-xl font-semibold mb-3">
+                Subreddit research and Reddit strategy for a sports statistics brand
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                A company behind a sports statistics and analytics platform wants to reach Reddit people interested in players' stats. 
+                The goal was to identify Reddit groups that might contain such people and provide marketing tactics. 
+                We conducted subreddit research and prepared a Reddit marketing strategy.<br> 
+                Our process: search subreddits by keywords, pick the most relevant groups according to our criteria, extract user activity stats and moderation rules for each, and do a post-by-post analysis of shortlisted subreddits. 
+                Delivery is a spreadsheet with subreddits' stats, a strategy document, and a series of table posts.
+                </p>
+            </div>
+        </div>
+    
+        <div class="case-card border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-6" data-category="tech">
+            <!-- Image -->
+            <div class="flex-shrink-0 mx-auto md:mx-0">
+                <a href="assets/cases/Browsers for AI Agents Market review_demo.pdf" target="_blank">
+                    <img src="assets/cases/AI Agents_title.png" class="w-48 h-48 object-cover rounded-md border">
+                </a>
+            </div>
+            <!-- Content -->
+            <div class="flex-grow text-center md:text-left">
+                <p class="text-sm text-gray-500 mb-2">
+                Technology market research · Global
+                </p>
+                <h3 class="text-xl font-semibold mb-3">
+                Market review of browsers for AI Agents
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                Research and review of AI agents market and, especially, browsers for AI agents. 
+                Included current industry evaluation (trends, funding), customer segmentation, competitors research, and strategic recommendations for market entrance.
+                </p>
+            </div>
+        </div>
+
+        <div class="case-card border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-6" data-category="regional reddit">
+            <!-- Image -->
+            <div class="flex-shrink-0 mx-auto md:mx-0">
+                <a href="assets/cases/Local jobs in DACH_market report_5demo.pdf" target="_blank">
+                    <img src="assets/cases/Local jobs_DACH_title.png" class="w-48 h-48 object-cover rounded-md border">
+                </a>
+            </div>
+            <!-- Content -->
+            <div class="flex-grow text-center md:text-left">
+                <p class="text-sm text-gray-500 mb-2">
+                Regional market research · Germany, Austria, Switzerland
+                </p>
+                <h3 class="text-xl font-semibold mb-3">
+                Local job market research in DACH region
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                Conducted market research for a novel local jobs marketplace in the DACH region. 
+                That included: estimating TAM-SAM-SOM; studying frequent problems and solutions people mentioned on social media; 
+                reviewing legal regulations for the local gigs market; comparing existing alternatives by a set of parameters; 
+                suggesting an actionable development strategy for an original product.
+                </p>
+            </div>
+        </div>
+        
+        <div class="case-card border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-6" data-category="tech">
+            <!-- Image -->
+            <div class="flex-shrink-0 mx-auto md:mx-0">
+                <a href="assets/cases/Atomic clock_TAM-SAM-SOM_demo.pdf" target="_blank">
+                    <img src="assets/cases/Atomic clock_TAM-SAM-SOM_title.png" class="w-48 h-48 object-cover rounded-md border">
+                </a>
+            </div>
+            <!-- Content -->
+            <div class="flex-grow text-center md:text-left">
+                <p class="text-sm text-gray-500 mb-2">
+                Technology research · Global
+                </p>
+                <h3 class="text-xl font-semibold mb-3">
+                Atomic clocks market size and analysis
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                Building out a TAM, SAM, SOM for three generations of chip-scale atomic clocks. 
+                The delivery is a market report with 3x3 market size estimations, a competitors review, and market size breakdown by industry application.
+                </p>
+            </div>
+        </div>
+
+        <div class="case-card border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-6" data-category="regional reddit">
+            <!-- Image -->
+            <div class="flex-shrink-0 mx-auto md:mx-0">
+                <a href="assets/cases/Trucking Industry Europe_Demo_5.pdf" target="_blank">
+                    <img src="assets/cases/Trucking Industry Europe_title.png" class="w-48 h-48 object-cover rounded-md border">
+                </a>
+            </div>
+            <!-- Content -->
+            <div class="flex-grow text-center md:text-left">
+                <p class="text-sm text-gray-500 mb-2">
+                Regional market research · Europe
+                </p>
+                <h3 class="text-xl font-semibold mb-3">
+                Trucking industry in Europe
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                The company that develops truck accessories wanted to find out the frequent truck driver's challenges. 
+                The project included an overview of the truck transportation industry landscape and a study of a truck driver's experience. 
+                The state of road freight transportation in Europe was reviewed. The drivers' pain points and challenges were discovered from social media and industry reports.
+                </p>
+            </div>
+        </div>
+
+        <div class="case-card border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-6" data-category="regional">
+            <!-- Image -->
+            <div class="flex-shrink-0 mx-auto md:mx-0">
+                <a href="assets/cases/Supply chain management_Europe_demo.pdf" target="_blank">
+                    <img src="assets/cases/Supply chain management_Europe_title.png" class="w-48 h-48 object-cover rounded-md border">
+                </a>
+                <!-- <img src="assets/pexels-brettjordan-7568293.jpg" class="w-48 h-48 object-cover rounded-md border"> -->
+            </div>
+            <!-- Content -->
+            <div class="flex-grow text-center md:text-left">
+                <p class="text-sm text-gray-500 mb-2">
+                Regional market research · Europe
+                </p>
+                <h3 class="text-xl font-semibold mb-3">
+                Supply chain management business opportunities in Europe
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                The goal of this project was to identify supply management challenges and associated business opportunities. 
+                First, we made a review of Europe's trade routes by the category of products and volume. 
+                Then, mapped the product category to the goods types (perishable, hazardous, etc.). 
+                From the mapping, we picked the supply chain operation type that addresses the transportation needs of the most demanded products.
+                </p>
+            </div>
+        </div>
+
+        <div class="case-card border rounded-lg p-6 flex flex-col md:flex-row md:items-center gap-6" data-category="social reddit">
+            <!-- Image -->
+            <div class="flex-shrink-0 mx-auto md:mx-0">
+                <img src="assets/pexels-brettjordan-7568293.jpg" class="w-48 h-48 object-cover rounded-md border">
+            </div>
+            <!-- Content -->
+            <div class="flex-grow text-center md:text-left">
+                <p class="text-sm text-gray-500 mb-2">
+                Social Media · Reddit
+                </p>
+                <h3 class="text-xl font-semibold mb-3">
+                Subreddits research and marketing strategy
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                With 40+ cases, Reddit is one of "Platforms research" signature areas of expertise. 
+                Specifically, it is a subreddits research (Reddit groups) and marketing strategy for your brand. 
+                In our study, we identify relevant communities, extract subreddit stats, and recommend suitable participation ways (what works better: post/comments/ads, etc.). 
+                For that, we extract user activity metrics and moderation rules using manual and automated proprietary methods. 
+                Tailored methods make our Reddit research and strategy service quite cost-effective. 
+                Contact us to know how you can improve your Reddit presence.
+                </p>
+            </div>
+        </div>
+        <!-- Duplicate more cards -->
+
+        <!-- CARD -->
+        <!-- <div class="case-card border rounded-lg overflow-hidden" data-category="social reddit">
+            <img src="assets/case1.jpg" class="w-full h-48 object-cover">
+            <div class="p-6">
+            <p class="text-sm text-gray-500 mb-2">
+                Social Media · Reddit
+            </p>
+            <h3 class="text-lg font-semibold mb-2">
+                Reddit Sentiment Analysis for SaaS Product
+            </h3>
+            <p class="text-gray-700 text-sm leading-relaxed">
+                Conducted large-scale scraping and analysis of Reddit discussions 
+                to identify product perception drivers. Built sentiment clusters 
+                and mapped pain points across subreddits. Results informed positioning 
+                and messaging strategy.
+            </p>
+            </div>
+        </div> -->
+    </div>
+
+    <p class="text-center text-gray-500 mt-12">
+        End of case studies. We’re likely working on the next one right now.
+    </p>
+
+  </section>
+</main>
+<script src="header.js"></script>
+<script>
+    fetch('header.html')
+        .then(r => r.text())
+        .then(html => {
+        document.getElementById('header').innerHTML = html;
+        initHeader(); // initialize after injection
+    });
+</script>
+</body>
