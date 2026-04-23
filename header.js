@@ -6,6 +6,7 @@ function initHeader() {
   const map = {
     "index.html": "nav-home",
     "": "nav-home",
+    "cases.html": "nav-cases",
     "reddit.html": "nav-reddit",
     "team.html": "nav-team",
     "contactus.html": "nav-contact"
