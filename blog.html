@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Platforms research</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+    <div id="header"></div>
+    <main class="flex-grow">
+        <section class="max-w-6xl mx-auto px-6 py-24">
+
+            <h1 class="text-3xl font-bold text-center mb-16"> Research Blog </h1>
+
+            <!-- Blog post -->
+            <article class="py-10 border-b border-gray-200">
+                <div class="flex flex-col md:flex-row gap-6"> <!-- Image -->
+                    <div class="flex-shrink-0"> 
+                        <img src="assets/pexels-brettjordan-7568293.jpg" alt="Blog preview image"
+                            class="w-full md:w-80 aspect-video object-cover rounded-md" /> 
+                    </div> <!--aspect-[4/3]-->
+                    <div class="flex-grow"> <!-- Title -->
+                        <h2 class="text-2xl font-semibold leading-snug mb-3"> <a href="blog/reddit-market-positioning.html" class="hover:underline"> 
+                            Filler: What Reddit Discussions Reveal About Early-Stage SaaS Positioning </a> </h2> <!-- Description -->
+                        <p class="text-sm mb-4"> <span class="text-gray-800 font-medium"> Semyon Fast </span> 
+                            <span class="text-gray-500"> · June 2026 </span> 
+                        </p>
+                        <p class="text-gray-700 leading-relaxed"> Filler: Reddit communities contain detailed customer
+                            frustrations, expectations, and language patterns that often do not appear in traditional
+                            surveys. This article explains how subreddit analysis can uncover positioning gaps,
+                            messaging risks, and overlooked market demand signals. </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- <p class="text-center text-gray-500 mt-12">
+                The end of case studies for this category. We're likely working on the next one right now.
+            </p> -->
+
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="border-t">
+        <div class="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500">
+        © 2026 Platforms research
+        </div>
+    </footer>
+    <script src="header.js"></script>
+    <script>
+        fetch('header.html')
+            .then(r => r.text())
+            .then(html => {
+                document.getElementById('header').innerHTML = html;
+                initHeader(); // initialize after injection
+            });
+    </script>
+</body>

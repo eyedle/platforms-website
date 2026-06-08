@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service 1 — Community Search</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!-- ```html id="2wxb0w" -->
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+
+  <div id="header"></div>
+
+  <main class="flex-grow">
+
+    <article class="max-w-2xl mx-auto px-6 py-24">
+      <!-- Title -->
+      <h1 class="text-4xl font-bold leading-tight mb-6">
+        What Reddit Discussions Reveal About Early-Stage SaaS Positioning
+      </h1>
+
+      <!-- Description -->
+      <p class="text-xl text-gray-600 leading-relaxed mb-8">
+        Reddit communities often contain highly specific customer frustrations,
+        expectations, and language patterns that rarely appear in traditional
+        surveys. This article explains how qualitative subreddit analysis can
+        help identify positioning gaps and overlooked market signals.
+      </p>
+
+      <!-- Author / Date -->
+      <div class="flex justify-between items-center mb-10 text-sm">
+
+        <div class="font-medium text-gray-800">
+          Semyon Fast
+        </div>
+
+        <div class="text-gray-500">
+          June 3, 2026
+        </div>
+
+      </div>
+
+      <!-- Featured image -->
+       <!-- "../assets/blog/blog1.jpg" -->
+      <div class="mb-2">
+        <img
+          src="assets/pexels-brettjordan-7568293.jpg"
+          alt="Reddit market research article image"
+          class="w-full aspect-[16/9] object-cover rounded-lg"
+        />
+      </div>
+
+      <!-- Image credit -->
+      <p class="text-sm text-gray-400 text-right mb-14">
+        Photo: Brett Jordan / Unsplash
+      </p>
+
+      <!-- Article body -->
+      <div class="prose prose-lg max-w-none text-gray-800">
+
+        <p>
+          Market positioning is often discussed as a branding exercise,
+          but in practice it is heavily influenced by the language and
+          expectations already present within target communities.
+        </p>
+
+        <p>
+          Reddit provides a particularly useful environment for this type
+          of research because users tend to discuss frustrations and
+          workflows in a highly detailed and unfiltered way.
+        </p>
+
+        <h2>
+          Why subreddit discussions matter
+        </h2>
+
+        <p>
+          Unlike structured surveys, subreddit conversations emerge
+          organically. Users frequently compare products, describe failed
+          experiences, and explain purchasing decisions without external
+          prompting.
+        </p>
+
+        <p>
+          This creates a large qualitative dataset that can reveal:
+        </p>
+
+        <ul>
+          <li>Repeated pain points</li>
+          <li>Unexpected feature demand</li>
+          <li>Vocabulary used by actual customers</li>
+          <li>Competitive perception patterns</li>
+          <li>Market skepticism and adoption barriers</li>
+        </ul>
+
+        <h2>
+          Translating discussion into positioning insights
+        </h2>
+
+        <p>
+          Large-scale Reddit analysis becomes significantly more useful
+          when combined with thematic clustering and sentiment mapping.
+          Instead of treating comments individually, researchers can group
+          discussions into recurring narratives and behavioral patterns.
+        </p>
+
+        <p>
+          This allows companies to align product messaging with existing
+          customer expectations rather than relying entirely on internal
+          assumptions.
+        </p>
+
+      </div>
+
+    </article>
+
+  </main>
+  <!-- Footer -->
+  <footer class="border-t">
+    <div class="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500">
+      © 2026 Platforms research
+    </div>
+  </footer>
+  
+  <script src="header.js"></script>
+    <script>
+        fetch('header.html')
+            .then(r => r.text())
+            .then(html => {
+                document.getElementById('header').innerHTML = html;
+                initHeader(); // initialize after injection
+            });
+  </script>
+</body>
+
+</html>
